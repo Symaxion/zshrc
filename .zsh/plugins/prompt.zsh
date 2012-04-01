@@ -16,6 +16,9 @@ Darwin)
 Linux|*)
     distro=$(lsb_release -si)
     case $distro in
+        Fedora)
+        # Probably a crapload of other distros as well
+        export PS1="[%n@%m %c]$usuf "
         Ubuntu|Debian|*)
         # Default to Debian-like shell.
         export PS1="%n@%m:%~$usuf "
