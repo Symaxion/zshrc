@@ -1,6 +1,3 @@
-# Get ourselves a prompt that looks slightly more like bash
-export PS1="%m:%c %n$ "
-
 # Slightly saner default PATH
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
@@ -30,7 +27,7 @@ setopt beep
 setopt extendedglob
 
 # Plugins!
-plugins=(vimode take bashlike history)
+plugins=(prompt vimode take bashlike history)
 
 for x in ${plugins[@]}; do
     if [ -f $HOME/.zsh/plugins/$x.zsh ]; then
