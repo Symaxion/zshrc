@@ -11,6 +11,13 @@ zle -N zle-keymap-select
 
 bindkey -v
 
+bindkey -M viins '^h' backward-delete-char
+bindkey -M viins '^?' backward-delete-char
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
 # if mode indicator wasn't setup by theme, define default
 if [[ "$MODE_INDICATOR" == "" ]]; then
   MODE_INDICATOR="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"

@@ -1,9 +1,6 @@
 # Slightly saner default PATH
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
-# Enable vim mode
-set -o vi
-
 # Enable extra completion options
 fpath=($HOME/.zsh/func $fpath)
 typeset -U fpath
