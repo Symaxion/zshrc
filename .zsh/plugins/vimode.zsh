@@ -18,6 +18,9 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
+autoload colors;
+colors;
+
 # if mode indicator wasn't setup by theme, define default
 if [[ "$MODE_INDICATOR" == "" ]]; then
   MODE_INDICATOR="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
