@@ -1,5 +1,6 @@
 # Slightly saner default PATH
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=$PATH:/usr/X11/bin
 
 # Enable extra completion options
 fpath=($HOME/.zsh/func $fpath)
@@ -24,7 +25,7 @@ setopt beep
 setopt extendedglob
 
 # Plugins!
-plugins=(prompt vimode take bashlike history)
+plugins=(prompt vimode take bashlike history mactex projprefix)
 
 for x in ${plugins[@]}; do
     if [ -f $HOME/.zsh/plugins/$x.zsh ]; then
@@ -34,11 +35,3 @@ for x in ${plugins[@]}; do
     fi
 done
 
-# /opt/projects alternate prefix
-# export PROJPREFIX=/opt/projects
-# export PATH=$PROJPREFIX/bin:$PATH
-# export MANPATH=$PROJDIRPREFIX/share/man:$MANPATH
-# export DYLD_LIBRARY_PATH=$PROJPREFIX/lib:$DYLD_LIBARY_PATH
-# export LIBRARY_PATH=$PROJPREFIX/lib:$LIBRARY_PATH
-# export C_INCLUDE_PATH=$PROJPREFIX/include:$C_INCLUDE_PATH
-# export CPLUS_INCLUDE_PATH=$PROJPREFIX/include:$CPLUS_INCLUDE_PATH
