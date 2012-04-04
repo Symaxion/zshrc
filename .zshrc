@@ -35,3 +35,7 @@ for x in ${plugins[@]}; do
     fi
 done
 
+# Load local stuff
+if [ -f "$HOME/.zsh_local" ]; then
+    source "$HOME/.zsh_local"
+fi
