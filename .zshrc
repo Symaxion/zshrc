@@ -1,7 +1,3 @@
-# Slightly saner default PATH
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
-export PATH=$PATH:/usr/X11/bin
-
 # Enable extra completion options
 fpath=($HOME/.zsh/func $fpath)
 typeset -U fpath
