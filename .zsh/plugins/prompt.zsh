@@ -12,14 +12,13 @@ else
 fi
 
 case $uname in
-Cygwin*)
+Cygwin*|CYGWIN*)
     # Cygwin
     autoload colors;
     colors;
 
     export PS1="$nl%{$fg[green]%}%n@%m %{$fg[yellow]%}%~"
     export PS1="$PS1$nl%{$reset_color%}$usuf "
-    ;;
 Darwin)
     # Mac OS X
     export PS1="%m:%c %n$usuf "
