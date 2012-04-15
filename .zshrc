@@ -21,7 +21,7 @@ setopt beep
 setopt extendedglob
 
 # Plugins!
-plugins=(prompt vimode func bashlike history mactex projprefix)
+plugins=(prompt vimode func bashlike history projprefix)
 
 for x in ${plugins[@]}; do
     if [ -f $HOME/.zsh/plugins/$x.zsh ]; then
