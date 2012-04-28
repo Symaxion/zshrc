@@ -8,7 +8,7 @@ trap '' 2
 
 cd ~/vimrc
 
-if git fetch --dry-run | grep -q -v '.' 2>&1 > /dev/null; then
+if git fetch --dry-run 2>&1 | grep -q '.'; then
     echo "Updating vimrc..."
     git pull
     case $(uname -s) in
@@ -23,7 +23,7 @@ fi
 # Zsh
 
 cd ~/zshrc
-if git fetch --dry-run | grep -q -v '.' 2>&1 > /dev/null; then
+if git fetch --dry-run 2>&1 | grep -q '.'; then
     echo "Updating zshrc..."
     git pull
     echo
