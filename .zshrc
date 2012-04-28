@@ -20,16 +20,31 @@ setopt beep
 # Enable advanced (regex) globbing
 setopt extendedglob
 
-# Plugins!
-plugins=(prompt autoupdate vimode func bashlike history projprefix)
-
-for x in ${plugins[@]}; do
-    if [ -f $HOME/.zsh/plugins/$x.zsh ]; then
-        source $HOME/.zsh/plugins/$x.zsh
+# Themes! 
+loadtheme() {
+    if [ -f $HOME/.zsh/themes/$theme.zsh ]; then
+        source $HOME/.zsh/themes/$theme.zsh
     else
-        echo "zsh: warning, could not find plugin '$x'." >&2
+        echo "zsh: warning, could not lome theme '$theme'." >&2
     fi
-done
+}
+
+theme=default
+loadtheme
+
+# Plugins!
+loadplugins() {
+    for x in ${plugins[@]}; do
+        if [ -f $HOME/.zsh/plugins/$x.zsh ]; then
+            source $HOME/.zsh/plugins/$x.zsh
+        else
+            echo "zsh: warning, could not find plugin '$x'." >&2
+        fi
+    done
+}
+
+plugins=(autoupdate vimode func bashlike history projprefix)
+loadplugins
 
 # Load local stuff
 if [ -f "$HOME/.zsh_local" ]; then
