@@ -11,13 +11,22 @@ else
     usuf='\$'
 fi
 
+winify() {
+    if echo "$1" | grep -q '^~'; then
+        echo "$1" | sed 's:/:\\:g'
+    else
+        cygpath -aw "$1"
+    fi
+}
+
 case $uname in
 Cygwin*|CYGWIN*)
     # Cygwin
     autoload colors;
     colors;
+    setopt prompt_subst
 
-    export PS1="$nl%{$fg[green]%}%n@%m %{$fg[yellow]%}%~"
+    export PS1="$nl%{$fg[green]%}%n@%m %{$fg[yellow]%}"'$(winify $PWD)'
     export PS1="$PS1$nl%{$reset_color%}$usuf "
     ;;
 Darwin)
