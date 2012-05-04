@@ -12,7 +12,7 @@ else
 fi
 
 winify() {
-    if echo "$1" | grep -q '$HOME'; then
+    if echo "$1" | grep -q "$HOME"; then
         echo "$1" | sed "s:$HOME:~:" | sed 's:/:\\:g'
     else
         cygpath -aw "$1"
