@@ -9,21 +9,24 @@ trap '' 2
 cd ~/vimrc
 
 if git fetch --dry-run 2>&1 | grep -q '.'; then
+    echo
     echo "Updating vimrc..."
     git pull
     case $(uname -s) in
         Cygwin*|CYGWIN*)
-            $(pwd)/mkwincopy.sh
+            yes | $(pwd)/mkwincopy.sh
             ;;
         *)
             ;;
     esac
+    echo
 fi
 
 # Zsh
 
 cd ~/zshrc
 if git fetch --dry-run 2>&1 | grep -q '.'; then
+    echo
     echo "Updating zshrc..."
     git pull
     echo
