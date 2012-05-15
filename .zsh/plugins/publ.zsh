@@ -53,7 +53,7 @@ publ() {
             ;; 
         retrieve)
             for x in "$@"; do
-                wget http://seysayux.net/files/$x
+                wget http://seysayux.net/files/$x -O $(basename $x)
             done
             ;;
         filter)
