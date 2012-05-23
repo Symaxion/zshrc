@@ -7,17 +7,21 @@ publ() {
     mode=""
     dest=""
 
-    while getopts "srfd:" opt; do
+    while getopts "srfld:" opt; do
         case $opt in
         s)
-            if [ -n "$mode" ]; then echo "mode: $mode "; _publ_two_modes; return 1; fi
+            if [ -n "$mode" ]; then 
+                _publ_two_modes; 
+                return 1; 
+            fi
+
             mode="share"
             ;;
         r)
             if [ -n "$mode" ]; then _publ_two_modes; return 1; fi
             mode="retrieve"
             ;;
-        f)
+        l|f)
             if [ -n "$mode" ]; then _publ_two_modes; return 1; fi
             mode="filter"
             ;;
@@ -32,7 +36,11 @@ publ() {
             return 1;
             ;;
         esac
-        shift;
+    done
+
+    while [ $OPTIND -gt 1 ]; do
+        OPTIND=$(($OPTIND-1))
+        shift
     done
 
     if [ -z $mode ]; then 
@@ -57,10 +65,10 @@ publ() {
             done
             ;;
         filter)
-            if [ -z "$@" ]; then
+            if [ -z "$*" ]; then
                 ssh frank@seysayux.net -t "ls /files"
             else
-                ssh frank@seysayux.net -t "ls /files | grep '$@'"
+                ssh frank@seysayux.net -t "ls /files | grep $*"
             fi
             ;;
         esac
@@ -83,10 +91,10 @@ publ() {
             done
             ;;
         filter)
-            if [ -z "$@" ]; then
+            if [ -z "$*" ]; then
                 ls ~/Dropbox/Public
             else
-                ls ~/Dropbox/Public | grep "$@"
+                ls ~/Dropbox/Public | grep "$*"
             fi
             ;;
         esac
