@@ -43,7 +43,8 @@ loadplugins() {
     done
 }
 
-plugins=(autoupdate vimode func bashlike history projprefix ssh-tunnel publ)
+plugins=(autoupdate vimode func bashlike history projprefix ssh-tunnel publ
+        nocorrect mouse)
 loadplugins
 
 # Load local stuff
