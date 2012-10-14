@@ -1,0 +1,97 @@
+function zshfw_load_first() {
+    if [[ -f "$ZSHFW_USER_DIR/$1" ]]; then
+        source "$ZSHFW_USER_DIR/$1"
+    elif [[ -f "$ZSHFW_SYSTEM_DIR/$1" ]]; then
+        source "$ZSHFW_SYSTEM_DIR/$1"
+    else
+        return 1
+    fi
+}
+
+function zshfw_load_single_plugin() {
+    if [[ -z $(eval echo \${${1}_loaded}) ]]; then
+        zshfw_load_first "plugins/$1.zsh" || \
+            echo "zshfw: warning: cannot find plugin '$1'." >&2
+        export ${1}_loaded=1
+    fi
+}
+
+function loadplugin() {
+    for x in "$@"; do
+        zshfw_load_single_plugin "$x"
+    done
+}
+
+function loadplugins() {
+    loadplugin "$@"
+}
+
+function loadtheme() {
+    if [[ -z $1 ]]; then
+        return
+    fi
+
+    zshfw_load_first "themes/$1.zsh" || \
+        echo "zshfw: warning: cannot find theme '$1'." >&2
+}
+
+function unloadplugin() {
+    if [[ -z $1 ]]; then
+        return;
+    fi
+
+    if [[ -n $(eval echo \${${1}_has_unload}) ]]; then
+        ${1}_unload
+    else
+        echo "zshfw: no unload function for plugin '$1'." >&2
+    fi
+}
+
+function helpplugin() {
+    if [[ -z $1 ]]; then
+        return;
+    fi
+
+    if [[ -n $(eval echo \${${1}_has_help}) ]]; then
+        ${1}_help
+    else
+        echo "zshfw: no help function for plugin '$1'." >&2
+    fi
+}
+
+function helptheme() {
+    if [[ -z $1 ]]; then
+        return;
+    fi
+
+    if [[ -n $(eval echo \${${1}_has_help}) ]]; then
+        eval ${1}_help
+    else
+        echo "zshfw: no help function for theme '$1'." >&2
+    fi
+}
+
+# These are pretty much always usable, so enable globally.
+
+# Enable extra completion options
+fpath=($HOME/.zsh/func $fpath)
+typeset -U fpath
+
+# Enable autocomplete
+zstyle :compinstall filename "$HOME/.zshrc"
+autoload -Uz compinit
+compinit
+_comp_options+=(globdots)
+
+# Enable auto-correction
+setopt correctall
+
+# Allow typing folder names mean cd
+setopt autocd
+
+# Beep
+setopt beep
+
+# Enable advanced (regex) globbing
+setopt extendedglob
+

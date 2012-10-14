@@ -1,53 +1,16 @@
-# Enable extra completion options
-fpath=($HOME/.zsh/func $fpath)
-typeset -U fpath
-
-# Enable autocomplete
-zstyle :compinstall filename "$HOME/.zshrc"
-autoload -Uz compinit
-compinit
-_comp_options+=(globdots)
-
-# Enable auto-correction
-setopt correctall
-
-# Allow typing folder names mean cd
-setopt autocd
-
-# Beep
-setopt beep
-
-# Enable advanced (regex) globbing
-setopt extendedglob
-
-# Themes! 
-loadtheme() {
-    if [ -f $HOME/.zsh/themes/$theme.zsh ]; then
-        source $HOME/.zsh/themes/$theme.zsh
-    else
-        echo "zsh: warning, could not lome theme '$theme'." >&2
-    fi
-}
-
-theme=default
-loadtheme
-
-# Plugins!
-loadplugins() {
-    for x in ${plugins[@]}; do
-        if [ -f $HOME/.zsh/plugins/$x.zsh ]; then
-            source $HOME/.zsh/plugins/$x.zsh
-        else
-            echo "zsh: warning, could not find plugin '$x'." >&2
-        fi
-    done
-}
-
-plugins=(autoupdate vimode func bashlike history ssh-tunnel publ
-        nocorrect mouse)
-loadplugins
-
-# Load local stuff
-if [ -f "$HOME/.zsh_local" ]; then
-    source "$HOME/.zsh_local"
+if [[ $ZSHFW_SYSTEM == 1 ]]; then
+    export ZSHFW_SYSTEM_DIR=/etc/zsh
+    source $ZSHFW_SYSTEM_DIR/zshfw
 fi
+
+if [[ $ZSHFW_SYSTEM -ne 1 && $ZSHFW_LOADED -ne 1 ]]; then
+    export ZSHFW_USER_DIR=$HOME/.zsh
+    source $ZSHFW_USER_DIR/zshfw
+fi
+
+loadtheme default
+
+loadplugins autoupdate vimode func bashlike history ssh-tunnel publ
+loadplugins nocorrect mouse
+
+loadplugin zshlocal
