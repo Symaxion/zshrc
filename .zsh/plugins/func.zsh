@@ -1,3 +1,16 @@
+func_has_help=1
+
+func_help() {
+    cat << 'EOF'
+
+    Func - collection of useful functions
+    Author: Frank Erens <frank@synthi.net>
+    Dependencies: None
+    Known conflicts: None
+
+EOF
+}
+
 take() {
     mkdir -p "$1" && cd "$1"
 }

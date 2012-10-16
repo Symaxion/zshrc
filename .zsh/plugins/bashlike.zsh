@@ -1,4 +1,18 @@
 # More bash-like completion
+
+bashlike_has_help=1
+
+bashlike_help() {
+    cat << 'EOF'
+
+    Bashlike - more bash-like completion
+    Author: Frank Erens <frank@synthi.net>
+    Dependencies: None
+    Known conflicts: None
+
+EOF
+}
+
 setopt noalwayslastprompt
 setopt noauto_remove_slash
 setopt no_list_types
