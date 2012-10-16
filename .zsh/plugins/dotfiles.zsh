@@ -18,6 +18,7 @@ EOF
 
 if [[ -z $DOTFILES_LOCATION ]]; then
     DOTFILES_LOCATION="$HOME/dotfiles"
+fi
 
 dotfiles() {
     "$DOTFILES_LOCATION/dotfiles.sh" "$@"
