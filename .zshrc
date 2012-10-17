@@ -11,6 +11,6 @@ fi
 loadtheme default
 
 loadplugins vimode func bashlike history ssh-tunnel publ
-loadplugins nocorrect mouse dotfiles
+loadplugins nocorrect dotfiles
 
 loadplugin zshlocal
