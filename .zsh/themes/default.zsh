@@ -8,7 +8,7 @@ nl='
 if [ $UID -eq 0 ]; then
     usuf='#'
 else
-    usuf='\$'
+    usuf='$'
 fi
 
 winify() {
