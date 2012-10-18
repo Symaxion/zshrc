@@ -1,3 +1,6 @@
+
+zshfw_current_theme=''
+
 function zshfw_load_first() {
     if [[ -f "$ZSHFW_USER_DIR/$1" ]]; then
         source "$ZSHFW_USER_DIR/$1"
@@ -8,7 +11,18 @@ function zshfw_load_first() {
     fi
 }
 
+function zshfw_editor() {
+    if [[ -n $EDITOR ]]; then
+        $EDITOR "$@"
+    elif [[ -n $VISUAL ]]; then
+        $VISUAL "$@"
+    else
+        vi "$@"
+    fi
+}
+
 function zshfw_load_single_plugin() {
+    current_plugin="$1"
     if [[ -z $(eval echo \${${1}_loaded}) ]]; then
         zshfw_load_first "plugins/$1.zsh" || \
             echo "zshfw: warning: cannot find plugin '$1'." >&2
@@ -33,6 +47,8 @@ function loadtheme() {
 
     zshfw_load_first "themes/$1.zsh" || \
         echo "zshfw: warning: cannot find theme '$1'." >&2
+
+    zshfw_current_theme="$1"
 }
 
 function unloadplugin() {
@@ -70,6 +86,91 @@ function helptheme() {
         echo "zshfw: no help function for theme '$1'." >&2
     fi
 }
+
+function zshfw_editthing() {
+    if [[ -f "$ZSHFW_USER_DIR/${1}s/$2.zsh" ]]; then
+        zshfw_editor "$ZSHFW_USER_DIR/${1}s/$2.zsh"
+    elif [[ -f "$ZSHFW_SYSTEM_DIR/${1}s/$2.zsh" ]]; then
+        echo "zshfw: copying system $1 to user directory...">&2;
+        cp "$ZSHFW_SYSTEM_DIR/${1}s/${2}.zsh" "$ZSHFW_USER_DIR/${1}s/$2.zsh"
+        zshfw_editor "$ZSHFW_USER_DIR/${1}s/$2.zsh"
+    else
+        echo "zshfw: error: cannot find $1 '$2'." >&2
+        return 1
+    fi
+}
+
+function editplugin() {
+    zshfw_editthing "plugin" "$1"
+}
+
+function edittheme() {
+    zshfw_editthing "theme" "$1"
+}
+
+function zshfw_listthings() {
+    echo "User $1:"
+    for x in "$ZSHFW_USER_DIR/$1/"*.zsh; do
+        basename "$x" .zsh
+    done
+
+    if [[ -d "$ZSHFW_SYSTEM_DIR/$1" ]]; then 
+        echo
+        echo "System $1:"
+        for x in "$ZSHFW_SYSTEM_DIR/$1/"*.zsh; do
+            basename "$x" .zsh
+        done
+    fi
+}
+
+function listplugins() {
+    zshfw_listthings "plugins"
+}
+
+function listthemes() {
+    zshfw_listthings "themes"
+}
+
+function zshfw_showtheme() {
+    loadtheme "$1"
+
+    echo "$1:"
+    print -P "$PS1"
+    echo
+}
+
+function showtheme() {
+    theme=$(currenttheme)
+    zshfw_showtheme "$@"
+    loadtheme "$theme"
+}
+
+function showthemes() {
+    theme=$(currenttheme)
+
+    for x in $(listthemes | sed 's/ /@/g'); do
+        if echo "$x" | grep 'themes:$' > /dev/null; then
+            echo "$x" | sed 's/@/ /g'
+            echo
+        elif [[ -n $x ]]; then
+            zshfw_showtheme "$x"
+        fi
+    done
+
+    export IFS="$tmpifs"
+
+    loadtheme "$theme"
+}
+
+function currenttheme() {
+    echo "$zshfw_current_theme"
+}
+
+function zshfw_plugin_error() {
+    echo "zshfw: error while loading plugin $1: $2" >&2
+}
+
+alias plugin_error='zshfw_plugin_error $current_plugin'
 
 # These are pretty much always usable, so enable globally.
 

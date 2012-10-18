@@ -1,5 +1,18 @@
 # Automatically tries to make a prompt that looks like the native one for the OS
 
+default_has_help=1
+
+default_help() {
+    cat << 'EOF'
+
+    Default - Looks similar to the default bash prompt on a system.
+    Author: Frank Erens <frank@synthi.net>
+    Depends: None
+    Known conflicts: None
+
+EOF
+}
+
 uname=$(uname -s)
 
 nl='

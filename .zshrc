@@ -10,7 +10,9 @@ fi
 
 loadtheme default
 
-loadplugins vimode func bashlike history ssh-tunnel publ
-loadplugins nocorrect dotfiles
+loadplugins vimode func bashlike history publ nocorrect dotfiles
+
+SSH_TUNNEL_DEFAULT=seysayux.net
+loadplugin sshtunnel
 
 loadplugin zshlocal

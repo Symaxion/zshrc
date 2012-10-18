@@ -1,4 +1,15 @@
-# vim:syntax=zsh
+vimode_has_help=1
+
+vimode_help() {
+    cat << 'EOF'
+
+    ViMode - Vi-like keybindings for ZSH
+    Author: Frank Erens <frank@synthi.net>
+    Dependencies: None
+    Known conflicts: None
+
+EOF
+}
 
 setopt prompt_subst
 
