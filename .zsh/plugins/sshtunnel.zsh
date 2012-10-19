@@ -10,6 +10,10 @@ sshtunnel_help() {
     Dependencies: None
     Known conflicts: None
 
+    Options:
+        SSH_TUNNEL_DEFAULT          (Required)
+                Default server to tunnel to if none is specified.
+
 EOF
 }
 

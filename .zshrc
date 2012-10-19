@@ -8,6 +8,8 @@ if [[ $ZSHFW_SYSTEM -ne 1 && $ZSHFW_LOADED -ne 1 ]]; then
     source $ZSHFW_USER_DIR/zshfw
 fi
 
+DEFAULT_ENABLE_VCS_INFO=1
+DEFAULT_ENABLE_GIT_STATUS=1
 loadtheme default
 
 loadplugins vimode func bashlike history publ nocorrect dotfiles
