@@ -172,6 +172,11 @@ function zshfw_plugin_error() {
 
 alias plugin_error='zshfw_plugin_error $current_plugin'
 
+# When exec is used, the 'loaded' variables stay in memory, so clear them
+for x in $(set | grep -a loaded | sed 's/=.*//'); do
+    unset $x
+done
+
 # These are pretty much always usable, so enable globally.
 
 # Enable extra completion options

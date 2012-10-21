@@ -26,7 +26,7 @@ if [[ -z $DEFAULT_ENABLE_VCS_INFO ]]; then
     DEFAULT_ENABLE_VCS_INFO=0
 fi
 
-if [[ -z $ ]]; then
+if [[ -z $DEFAULT_ENABLE_GIT_STATUS ]]; then
     DEFAULT_ENABLE_GIT_STATUS=0
 fi
 
@@ -96,6 +96,7 @@ Cygwin*|CYGWIN*)
     setopt prompt_subst
 
     export PS1="$nl%{$fg[green]%}%n@%m %{$fg[yellow]%}"'$(winify $PWD)'
+    export PS1="$PS1%{$fg[green]%}"'$(vcs_info_wrapper)$(default_git_status)'
     export PS1="$PS1$nl%{$reset_color%}$usuf "
     ;;
 Darwin)
@@ -107,11 +108,12 @@ Linux|*)
     case $distro in
     Fedora)
         # Probably a crapload of other distros as well
-        export PS1="[%n@%m %c]$usuf "
+        export PS1="[%n@%m %c]"'$(vcs_ifno_wrapper)'
+        export PS1="$PS1"'$(default_git_status)'"$usuf "
         ;;
     Ubuntu|Debian|*)
         # Default to Debian-like shell.
-        export PS1="%n@%m:%~$usuf "
+        export PS1="%n@%m:%~"'$(vcs_info_wrapper)$(default_git_status)'"$usuf "
         ;;
     esac
     ;;
