@@ -3,10 +3,10 @@ manpre_has_help=1
 manpre_help() {
     cat << 'EOF'
 
-    ManPre - open man pages in Preview
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BManPre%b - open man pages in Preview
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
 EOF
 }

@@ -5,15 +5,15 @@ default_has_help=1
 default_help() {
     cat << 'EOF'
 
-    Default - Looks similar to the default bash prompt on a system.
-    Author: Frank Erens <frank@synthi.net>
-    Depends: gitthemes (optional)
-    Known conflicts: None
+    %BDefault%b - Looks similar to the default bash prompt on a system.
+    %BAuthor:%b Frank Erens %U<frank@synthi.net>%u
+    %BDepends:%b gitthemes (optional)
+    %BKnown conflicts:%b None
 
-    Options: 
-        DEFAULT_ENABLE_VCS_INFO         [0]
+    %BOptions:%b 
+        %UDEFAULT_ENABLE_VCS_INFO%u         [0]
                 Enables VCS info (type, branch) on the prompt if in a repo.
-        DEFAULT_ENABLE_GIT_STATUS       [0]
+        %UDEFAULT_ENABLE_GIT_STATUS%u       [0]
                 Shows git status (clean, dirty) on the prompt if in a git
                 repo.
                 Requires the gitthemes plugin.

@@ -5,10 +5,10 @@ history_has_help=1
 history_help() {
     cat << 'EOF'
 
-    History - enable command history
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BHistory%b - enable command history
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
 EOF
 }

@@ -5,10 +5,10 @@ keyblock_has_help=1
 keyblock_help() {
     cat << 'EOF'
 
-    Keyblock - fixes the navigation keyblock
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BKeyblock%b - fixes the navigation keyblock
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
 EOF
 }

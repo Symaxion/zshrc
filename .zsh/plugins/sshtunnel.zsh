@@ -5,13 +5,13 @@ sshtunnel_has_help=1
 sshtunnel_help() {
     cat << 'EOF'
 
-    SSHTunnel - Easy SSH tunneling
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BSSHTunnel%b - Easy SSH tunneling
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
-    Options:
-        SSH_TUNNEL_DEFAULT          (Required)
+    %BOptions:%b
+        %USSH_TUNNEL_DEFAULT%u          (Required)
                 Default server to tunnel to if none is specified.
 
 EOF

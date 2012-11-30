@@ -5,20 +5,20 @@ dotfiles_has_help=1
 dotfiles_help() {
     cat << 'EOF'
 
-    Dotfiles - make managing repos of dotfiles easier
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BDotfiles%b - make managing repos of dotfiles easier
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
-    Options:
-        DOTFILES_LOCATION           [$HOME/dotfiles]  
+    %BOptions:%b
+        %UDOTFILES_LOCATION%u           [$HOME/dotfiles]  
                 Location of the dotfiles repo.
 
-        DOTFILES_WARN_UPDATE        [1]
+        %UDOTFILES_WARN_UPDATE%u       [1]
                 Whether to warn if the dotfiles haven't been updated for a
                 while.
 
-        DOTFILES_WARN_TIME          [7]
+        %UDOTFILES_WARN_TIME%u         [7]
                 Time since last update, in days, after which to start 
                 warning about updates.
 

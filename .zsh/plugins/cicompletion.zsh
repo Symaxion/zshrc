@@ -5,10 +5,10 @@ cicompletion_has_help=1
 cicompletion_help() {
     cat << 'EOF'
 
-    CiCompletion - case-insensitive completion
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BCiCompletion%b - case-insensitive completion
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
 EOF
 }

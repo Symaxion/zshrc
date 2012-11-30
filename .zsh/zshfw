@@ -63,13 +63,17 @@ function unloadplugin() {
     fi
 }
 
+function helpthing() {
+    print -Pl "$($1)" | less -RFX
+}
+
 function helpplugin() {
     if [[ -z $1 ]]; then
         return;
     fi
 
     if [[ -n $(eval echo \${${1}_has_help}) ]]; then
-        ${1}_help
+        helpthing ${1}_help
     else
         echo "zshfw: no help function for plugin '$1'." >&2
     fi
@@ -81,7 +85,7 @@ function helptheme() {
     fi
 
     if [[ -n $(eval echo \${${1}_has_help}) ]]; then
-        eval ${1}_help
+        helpthing ${1}_help
     else
         echo "zshfw: no help function for theme '$1'." >&2
     fi

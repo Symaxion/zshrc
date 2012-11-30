@@ -3,10 +3,10 @@ func_has_help=1
 func_help() {
     cat << 'EOF'
 
-    Func - collection of useful functions
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BFunc%b - collection of useful functions
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
 EOF
 }

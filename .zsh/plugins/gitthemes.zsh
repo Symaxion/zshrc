@@ -3,11 +3,11 @@ gitthemes_has_help=1
 gitthemes_help() {
     cat << 'EOF'
 
-    GitThemes - support for oh-my-zsh themes that show git statuses.
-    Author: Frank Erens <frank@synthi.net>
-    Depends: None
-    Known conflicts: None
-    Notes: Adapted from oh-my-zsh
+    %BGitThemes%b - support for oh-my-zsh themes that show git statuses.
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDepends%b: None
+    %BKnown conflicts%b: None
+    %BNotes%b: Adapted from oh-my-zsh
 
 EOF
 }

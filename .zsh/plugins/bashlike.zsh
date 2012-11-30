@@ -5,10 +5,10 @@ bashlike_has_help=1
 bashlike_help() {
     cat << 'EOF'
 
-    Bashlike - more bash-like completion
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BBashlike%b - more bash-like completion
+    %BAuthor:%b Frank Erens %U<frank@synthi.net>$u
+    %BDependencies:%b None
+    %BKnown conflicts:%b None
 
 EOF
 }

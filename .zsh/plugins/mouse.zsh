@@ -3,11 +3,11 @@ mouse_has_help=1
 mouse_help() {
     cat << 'EOF'
 
-    Mouse - enable mouse support in ZSH
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
-    Notes: Disables terminal scrolling 
+    %BMouse%b - enable mouse support in ZSH
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
+    %BNotes%b: Disables terminal scrolling 
 
 EOF
 }
