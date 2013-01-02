@@ -66,9 +66,9 @@ publ() {
             ;;
         filter)
             if [ -z "$*" ]; then
-                ssh frank@seysayux.net -t "ls /files"
+                echo 'ls /files' | sftp -q seysayux.net | sed '1d'
             else
-                ssh frank@seysayux.net -t "ls /files | grep $*"
+                echo 'ls /files' | sftp -q seysayux.net | sed '1d' | grep "$*"
             fi
             ;;
         esac
