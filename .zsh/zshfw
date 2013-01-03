@@ -190,7 +190,7 @@ typeset -U fpath
 # Enable autocomplete
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
-compinit
+compinit -u
 _comp_options+=(globdots)
 
 # Enable auto-correction
