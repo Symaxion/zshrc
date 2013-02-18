@@ -90,7 +90,7 @@ winify() {
 
 get_distro() {
     if [ -r "/etc/issue" ]; then
-        grep -m1 "^[A-Za-z]" /etc/issue
+        grep -m1 "^[A-Za-z]" /etc/issue | cut -d' ' -f1
     elif which lsb_release > /dev/null 2>&1; then
         lsb_release -s -a 2>/dev/null | head -n1
     else
@@ -128,3 +128,4 @@ Linux|*)
     esac
     ;;
 esac
+
