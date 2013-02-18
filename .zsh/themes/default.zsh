@@ -114,7 +114,7 @@ Darwin)
     export PS1="%m:%c %n"'$(vcs_info_wrapper)$(default_git_status)'"$usuf "
     ;;
 Linux|*)
-    distro=$(lsb_release -si)
+    distro=$(get_distro)
     case $distro in
     Ubuntu|Debian)
         # Debian and derivatives have their own type of prompt
