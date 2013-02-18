@@ -122,7 +122,7 @@ Linux|*)
         ;;
     *)
         # Default to Red Hat/Fedora-like prompt
-        export PS1="[%n@%m %c]"'$(vcs_ifno_wrapper)'
+        export PS1="[%n@%m %c]"'$(vcs_info_wrapper)'
         export PS1="$PS1"'$(default_git_status)'"$usuf "
         ;;
     esac
