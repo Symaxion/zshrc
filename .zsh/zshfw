@@ -1,6 +1,15 @@
 
 zshfw_current_theme=''
 
+if [ -n "$ZSHFW_DEBUG" ]; then
+    function zshfw_debug() {
+        echo -e "\033[38;5;242m[zshfw] \033[1mDebug: $@\033[0m" >&2   
+    }
+else 
+    function zshfw_debug() {
+    }
+fi
+
 function zshfw_load_first() {
     if [[ -f "$ZSHFW_USER_DIR/$1" ]]; then
         source "$ZSHFW_USER_DIR/$1"
@@ -22,11 +31,13 @@ function zshfw_editor() {
 }
 
 function zshfw_load_single_plugin() {
+    zshfw_debug "Plugin: $1"
+
     current_plugin="$1"
     if [[ -z $(eval echo \${${1}_loaded}) ]]; then
         zshfw_load_first "plugins/$1.zsh" || \
             echo "zshfw: warning: cannot find plugin '$1'." >&2
-        export ${1}_loaded=1
+        set ${1}_loaded=1
     fi
 }
 
@@ -44,6 +55,8 @@ function loadtheme() {
     if [[ -z $1 ]]; then
         return
     fi
+
+    zshfw_debug "Theme: $1"
 
     zshfw_load_first "themes/$1.zsh" || \
         echo "zshfw: warning: cannot find theme '$1'." >&2
@@ -176,22 +189,22 @@ function zshfw_plugin_error() {
 
 alias plugin_error='zshfw_plugin_error $current_plugin'
 
-# When exec is used, the 'loaded' variables stay in memory, so clear them
-for x in $(set | grep -a loaded | sed 's/=.*//'); do
-    unset $x
-done
-
 # These are pretty much always usable, so enable globally.
 
 # Enable extra completion options
+zshfw_debug 'fpath'
 fpath=($HOME/.zsh/func $fpath)
 typeset -U fpath
 
 # Enable autocomplete
+zshfw_debug 'zstyle :compinstall'
 zstyle :compinstall filename "$HOME/.zshrc"
+zshfw_debug 'zstyle :completion'
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path .zcache
+zshfw_debug 'autoload -Uz compinit'
 autoload -Uz compinit
+zshfw_debug 'compinit -u'
 compinit -u
 _comp_options+=(globdots)
 

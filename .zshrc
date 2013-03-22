@@ -1,3 +1,5 @@
+# export ZSHFW_DEBUG=1
+
 if [[ $ZSHFW_SYSTEM == 1 ]]; then
     export ZSHFW_SYSTEM_DIR=/etc/zsh
     source $ZSHFW_SYSTEM_DIR/zshfw
