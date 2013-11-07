@@ -6,7 +6,7 @@ reminder_help() {
     cat << 'EOF'
 
     %BReminder%b - Show a list of reminders on startup
-    %BAuthor%b: Frank Erens <frank@synthi.net>
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
     %BDependencies%b: None
     %BKnown conflicts%b: None
 

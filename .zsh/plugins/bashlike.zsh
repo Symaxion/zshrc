@@ -6,9 +6,9 @@ bashlike_help() {
     cat << 'EOF'
 
     %BBashlike%b - more bash-like completion
-    %BAuthor:%b Frank Erens %U<frank@synthi.net>$u
-    %BDependencies:%b None
-    %BKnown conflicts:%b None
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
 EOF
 }

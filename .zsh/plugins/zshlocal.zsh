@@ -5,10 +5,10 @@ zshlocal_has_help=1
 zshlocal_help() {
     cat << 'EOF'
 
-    ZshLocal - Load local settings per computer.
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BZshLocal%b - Load local settings per computer.
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
 EOF
 }

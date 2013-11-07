@@ -10,15 +10,15 @@ dotfiles_help() {
     %BDependencies%b: None
     %BKnown conflicts%b: None
 
-    %BOptions:%b
+    %BOptions%b:
         %UDOTFILES_LOCATION%u           [$HOME/dotfiles]  
                 Location of the dotfiles repo.
 
-        %UDOTFILES_WARN_UPDATE%u       [1]
+        %UDOTFILES_WARN_UPDATE%u        [1]
                 Whether to warn if the dotfiles haven't been updated for a
                 while.
 
-        %UDOTFILES_WARN_TIME%u         [7]
+        %UDOTFILES_WARN_TIME%u          [7]
                 Time since last update, in days, after which to start 
                 warning about updates.
 

@@ -10,7 +10,7 @@ sshtunnel_help() {
     %BDependencies%b: None
     %BKnown conflicts%b: None
 
-    %BOptions:%b
+    %BOptions%b:
         %USSH_TUNNEL_DEFAULT%u          (Required)
                 Default server to tunnel to if none is specified.
 

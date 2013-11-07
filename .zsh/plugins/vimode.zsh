@@ -3,10 +3,10 @@ vimode_has_help=1
 vimode_help() {
     cat << 'EOF'
 
-    ViMode - Vi-like keybindings for ZSH
-    Author: Frank Erens <frank@synthi.net>
-    Dependencies: None
-    Known conflicts: None
+    %BViMode%b - Vi-like keybindings for ZSH
+    %BAuthor%b: Frank Erens %U<frank@synthi.net>%u
+    %BDependencies%b: None
+    %BKnown conflicts%b: None
 
 EOF
 }
