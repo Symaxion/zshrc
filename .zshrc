@@ -14,9 +14,10 @@ DEFAULT_ENABLE_VCS_INFO=1
 DEFAULT_ENABLE_GIT_STATUS=1
 loadtheme default
 
-loadplugins vimode func bashlike history publ nocorrect dotfiles
+loadplugins vimode func bashlike history publ nocorrect dotfiles reminder
 
 SSH_TUNNEL_DEFAULT=seysayux.net
 loadplugin sshtunnel
 
 loadplugin zshlocal
+
