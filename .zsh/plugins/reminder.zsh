@@ -13,11 +13,15 @@ reminder_help() {
 EOF
 }
 
-if [ -f $HOME/.reminder ]; then
-    echo -e "\e[1;37m########################################\e[0m"
-    echo -e "\e[31mYour reminders:\e[0m"
-    cat $HOME/.reminder
-    echo
-    echo -e "\e[1;37m########################################\e[0m"
-    echo
-fi
+reminder() {
+    if [ -f $HOME/.reminder ]; then
+        echo -e "\e[1;37m########################################\e[0m"
+        echo -e "\e[31mYour reminders:\e[0m"
+        cat $HOME/.reminder
+        echo
+        echo -e "\e[1;37m########################################\e[0m"
+        echo
+    fi
+}
+
+reminder
