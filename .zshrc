@@ -1,23 +1,20 @@
+# Example of a zshrc file for zshfw.
+
+# Enable debug output
 # export ZSHFW_DEBUG=1
 
-if [[ $ZSHFW_SYSTEM == 1 ]]; then
-    export ZSHFW_SYSTEM_DIR=/etc/zsh
-    source $ZSHFW_SYSTEM_DIR/zshfw
-fi
+# Setup search path for zshfw extensions
+export ZSHFW_PATH="$HOME/.zshfw:$HOME/.zsh"
 
-if [[ $ZSHFW_SYSTEM -ne 1 && $ZSHFW_LOADED -ne 1 ]]; then
-    export ZSHFW_USER_DIR=$HOME/.zsh
-    source $ZSHFW_USER_DIR/zshfw
-fi
+# Load zshfw
+source "$HOME/.zshfw/zshfw"
 
+# Load theme
 DEFAULT_ENABLE_VCS_INFO=1
 DEFAULT_ENABLE_GIT_STATUS=1
-loadtheme default
+zshfw theme load default
 
-loadplugins vimode func bashlike history publ nocorrect dotfiles reminder
+# Load plugins
+zshfw plugin load vimode func bashlike history dotfiles
 
-SSH_TUNNEL_DEFAULT=seysayux.net
-loadplugin sshtunnel
-
-loadplugin zshlocal
-
+zshfw plugin load zshlocal
